@@ -25,7 +25,7 @@ def sent_analyzer():
     response = emotion_detector(text_to_analyze)
 
     # Extract the label and score from the response
-    emotions = response
+    emotions = response.copy()
     if 'dominant_emotion' in emotions:
         del emotions['dominant_emotion']
     formated_emotions = ', '.join([f"'{key}': {value}" for key, value in emotions.items()])
