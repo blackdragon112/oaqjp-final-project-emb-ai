@@ -24,7 +24,7 @@ def sent_analyzer():
     # Pass the text to the emotion_detector() function and store the response
     response = emotion_detector(text_to_analyze)
 
-    # Extract the label and score from the response
+    # Extract the emotions and their scores from the response
     emotions = response.copy()
     if 'dominant_emotion' in emotions:
         del emotions['dominant_emotion']
@@ -32,7 +32,7 @@ def sent_analyzer():
     dominant_emotion = response['dominant_emotion']
 
     # Return a formatted string with the sentiment label and score
-    return f"For the given statement, the system response is {emotions}. The dominant emotion is {dominant_emotion}."
+    return f"For the given statement, the system response is {formated_emotions}. The dominant emotion is {dominant_emotion}."
 
 @app.route("/")
 def render_index_page():
