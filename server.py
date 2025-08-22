@@ -31,8 +31,12 @@ def sent_analyzer():
     formated_emotions = ', '.join([f"'{key}': {value}" for key, value in emotions.items()])
     dominant_emotion = response['dominant_emotion']
 
-    # Return a formatted string with the sentiment label and score
-    return f"For the given statement, the system response is {formated_emotions}. The dominant emotion is {dominant_emotion}."
+    # Check if the dominant_emotion is None, indicating an error or invalid input
+    if dominant_emotion is None:
+        return "Invalid text! Please try again!"
+    else:
+        # Return a formatted string with the emotions and scores
+        return f"For the given statement, the system response is {formated_emotions}. The dominant emotion is {dominant_emotion}."
 
 @app.route("/")
 def render_index_page():
